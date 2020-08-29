@@ -17,13 +17,16 @@ class Application {
   static TabController controller;
   static SpUtil sharePeference;
   static CategoryComponent widgetTree;
-  static bool pageIsOpen = false;
+  static bool pageIsOpen = true;
 
   static Map<String, String> github = {
     'widgetsURL':
         'https://github.com/alibaba/flutter-go/blob/develop/lib/widgets/',
-    //'develop':'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/tree/develop/lib/widgets/',
-    //'master':'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/tree/master/lib/widgets/'
+//    'develop':'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/tree/develop/lib/widgets/',
+    'develop':'https://github.com/alibaba/flutter-go/blob/develop/lib/widgets/',
+    'master':'https://github.com/alibaba/flutter-go/blob/develop/lib/widgets/',
+//    'master':'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/tree/master/lib/widgets/'
+//    'master':'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/tree/master/lib/widgets/'
   };
 
   /// 所有获取配置的唯一入口

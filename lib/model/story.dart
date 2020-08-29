@@ -1,15 +1,15 @@
 class StoryModel {
   final String title;
   final String image;
-  final int id;
+  final String id;
   final String url;
 
   StoryModel(this.id, this.title, {this.image, this.url});
 
   StoryModel.fromJson(Map<String, dynamic> json)
       : this(
-          json['id'],
-          json['title'],
+          json['id'].toString(),
+          json['title'].toString(),
           image: json['image'] != null
               ? json['image']
               : (json['images'] != null ? json['images'][0] : null),

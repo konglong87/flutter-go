@@ -77,7 +77,7 @@ Future<bool> checkDemo(String path) async {
     'src/'
   ];
 
-  for (String name in files) {
+  for (var name in files) {
     bool isDic = name.indexOf('/') != -1;
     bool isExist ;
     String detailPath = '$path/$name';

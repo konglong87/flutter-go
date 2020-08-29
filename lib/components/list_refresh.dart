@@ -44,14 +44,14 @@ class _ListRefreshState extends State<ListRefresh> {
 
 //  回弹效果
   backElasticEffect() {
-//    double edge = 50.0;
-//    double offsetFromBottom = _scrollController.position.maxScrollExtent - _scrollController.position.pixels;
-//    if (offsetFromBottom < edge) { // 添加一个动画没有更多数据的时候 ListView 向下移动覆盖正在加载更多数据的标志
-//      _scrollController.animateTo(
-//          _scrollController.offset - (edge -offsetFromBottom),
-//          duration: new Duration(milliseconds: 1000),
-//          curve: Curves.easeOut);
-//    }
+    double edge = 50.0;
+    double offsetFromBottom = _scrollController.position.maxScrollExtent - _scrollController.position.pixels;
+    if (offsetFromBottom < edge) { // 添加一个动画没有更多数据的时候 ListView 向下移动覆盖正在加载更多数据的标志
+      _scrollController.animateTo(
+          _scrollController.offset - (edge -offsetFromBottom),
+          duration: new Duration(milliseconds: 1000),
+          curve: Curves.easeOut);
+    }
   }
 
 // list探底，执行的具体事件
@@ -83,9 +83,9 @@ class _ListRefreshState extends State<ListRefresh> {
   Future<List> mokeHttpRequest() async {
     if (widget.requestApi is Function) {
       final listObj = await widget.requestApi({'pageIndex': _pageIndex});
-      _pageIndex = listObj['pageIndex'];
-      _pageTotal = listObj['total'];
-      return listObj['list'];
+      _pageIndex = int.parse(listObj['pageIndex'].toString());
+      _pageTotal = int.parse(listObj['total'].toString());
+      return listObj['list'].toString().split("");
     } else {
       return Future.delayed(Duration(seconds: 2), () {
         return [];
@@ -161,7 +161,7 @@ class _ListRefreshState extends State<ListRefresh> {
         itemBuilder: (context, index) {
           if (index == 0 && index != items.length) {
             if (widget.headerView is Function) {
-              return widget.headerView();
+              return widget.headerView() as Widget;
             } else {
               return Container(height: 0);
             }
@@ -173,7 +173,7 @@ class _ListRefreshState extends State<ListRefresh> {
             //print('itemsitemsitemsitems:${items[index].title}');
             //return ListTile(title: Text("Index${index}:${items[index].title}"));
             if (widget.renderItem is Function) {
-              return widget.renderItem(index, items[index]);
+              return widget.renderItem(index, items[index]) as Widget;
             }
           }
           return null;

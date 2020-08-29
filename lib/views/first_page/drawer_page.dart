@@ -15,9 +15,9 @@ import 'package:flutter_go/event/event_model.dart';
 import 'package:event_bus/event_bus.dart';
 
 const List<Map<String, dynamic>> defalutThemeColor = [
-  {'cnName': 'Flutter篮', 'value': 0xFF3391EA},
-  {'cnName': '拍卖红', 'value': 0xFFC91B3A},
-  {'cnName': '阿里橙', 'value': 0xFFF7852A},
+  {'cnName': '孙总篮', 'value': 0xFF3391EA},
+  {'cnName': '玛尼红', 'value': 0xFFC91B3A},
+  {'cnName': '蒋杰橙', 'value': 0xFFF7852A},
 ];
 
 class DrawerPage extends StatefulWidget {
@@ -118,8 +118,8 @@ class _DrawerPageState extends State<DrawerPage> {
     List<Widget> tempWidget = [];
     for (var i = 0; i < defalutThemeColor.length; i++) {
       tempWidget.add(SingleThemeColor(
-        themeColor: defalutThemeColor[i]['value'],
-        coloeName: defalutThemeColor[i]['cnName'],
+        themeColor: defalutThemeColor[i]['value'] as int,
+        coloeName: defalutThemeColor[i]['cnName'] as String,
       ));
     }
     return tempWidget;
@@ -144,7 +144,8 @@ class _DrawerPageState extends State<DrawerPage> {
               fit: BoxFit.cover,
               image: new NetworkImage(hasLogin
                   ? widget.userInfo.avatarPic
-                  : 'https://hbimg.huabanimg.com/9bfa0fad3b1284d652d370fa0a8155e1222c62c0bf9d-YjG0Vt_fw658'),
+//                  : 'https://hbimg.huabanimg.com/9bfa0fad3b1284d652d370fa0a8155e1222c62c0bf9d-YjG0Vt_fw658'),
+                  : 'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1598711298&di=4c00fe068aeb70b8ed362decacb433cf&src=http://n.sinaimg.cn/sinacn/w640h640/20180109/9e54-fyqnici8428669.jpg'),
             ),
           ),
         ),
@@ -155,7 +156,7 @@ class _DrawerPageState extends State<DrawerPage> {
             size: 27.0,
           ),
           title: Text(
-            '全网搜',
+            '搜sz',
             style: textStyle,
           ),
           onTap: () {
@@ -168,7 +169,7 @@ class _DrawerPageState extends State<DrawerPage> {
             size: 27.0,
           ),
           title: Text(
-            '我的收藏',
+            'sz收藏',
             style: textStyle,
           ),
           onTap: () {
@@ -228,11 +229,11 @@ class _DrawerPageState extends State<DrawerPage> {
             size: 27.0,
           ),
           title: Text(
-            '分享 App',
+            '分享 sz',
             style: textStyle,
           ),
           onTap: () {
-            Share.share('https://flutter-go.pub/website/');
+            Share.share('https://www.coudidi.com');
           },
         ),
         new Divider(),

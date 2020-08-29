@@ -33,7 +33,7 @@ class _CategoryHome extends State<CategoryHome> {
     // 初始化加入顶级的name
     print("这是新界面的id:>>> ${widget.token}");
 
-    CommonItem targetGroup = Application.widgetTree.find(widget.token) ?? [];
+    CommonItem targetGroup = (Application.widgetTree.find(widget.token) as CommonItem<dynamic>) ;
     print("targetGroup::: $targetGroup");
 
     catHistory.add(targetGroup);

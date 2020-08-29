@@ -27,7 +27,7 @@ class NetUtils {
     String documentsPath = documentsDir.path;
     var dir = new Directory("$documentsPath/cookies");
     await dir.create();
-    dio.interceptors.add(CookieManager(PersistCookieJar(dir: dir.path)));
+//    dio.interceptors.add(CookieManager(PersistCookieJar(dir: dir.path)));
     if (params != null) {
       response = await dio.get(url, queryParameters: params);
     } else {
@@ -48,7 +48,7 @@ class NetUtils {
     String documentsPath = documentsDir.path;
     var dir = new Directory("$documentsPath/cookies");
     await dir.create();
-    dio.interceptors.add(CookieManager(PersistCookieJar(dir: dir.path)));
+//    dio.interceptors.add(CookieManager(PersistCookieJar(dir: dir.path)));
     var response = await dio.post(url, data: params);
     return response.data;
   }

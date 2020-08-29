@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_go/views/fourth_page/page_dragger.dart';
 import 'package:flutter_go/views/fourth_page/page_reveal.dart';
 import 'package:flutter_go/views/fourth_page/pager_indicator.dart';
-import 'package:flutter_go/views/fourth_page/pages.dart';
+import 'package:flutter_go/views/fourth_page/Fpages.dart';
 
 class FourthPage extends StatefulWidget {
   @override
@@ -92,14 +92,14 @@ class FourthPageState extends State<FourthPage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return new Stack(
       children: [
-        new Page(
+        new SzPage(
           // page 的主要内容
           viewModel: pages[activeIndex],
           percentVisible: 1.0,
         ),
         new PageReveal(
           revealPercent: slidePercent,
-          child: new Page(
+          child: new SzPage(
             viewModel: pages[nextPageIndex],
             percentVisible: slidePercent,
           ),

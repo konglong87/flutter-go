@@ -48,7 +48,8 @@ class _IssuesMessagePageState extends State<IssuesMessagePage> {
     } else {
       String mk = (_delta == null)
           ? 'No description provided.'
-          : notusMarkdown.encode(_delta);
+          : "不知道是啊哈1";
+//          : notusMarkdown.encode(_delta);
       DataUtils.feedback({'title': _title, "body": mk}, context).then((result) {
         _show('提交成功');
         Navigator.maybePop(context);
@@ -127,12 +128,12 @@ class _IssuesMessagePageState extends State<IssuesMessagePage> {
 
   Widget _descriptionEditor() {
     final theme = new ZefyrThemeData(
-      toolbarTheme: ZefyrToolbarTheme.fallback(context).copyWith(
-        color: Colors.grey.shade800,
-        toggleColor: Colors.grey.shade900,
-        iconColor: Colors.white,
-        disabledIconColor: Colors.grey.shade500,
-      ),
+//      toolbarTheme: ZefyrToolbarTheme.fallback(context).copyWith(
+//        color: Colors.grey.shade800,
+//        toggleColor: Colors.grey.shade900,
+//        iconColor: Colors.white,
+//        disabledIconColor: Colors.grey.shade500,
+//      ),
     );
 
     return ZefyrTheme(

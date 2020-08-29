@@ -51,7 +51,8 @@ class SubPageState extends State<SubPage> with AutomaticKeepAliveClientMixin {
 
   Future<Map> getIndexListData([Map<String, dynamic> params]) async {
     const juejin_flutter =
-        'https://timeline-merger-ms.juejin.im/v1/get_tag_entry?src=web&tagId=5a96291f6fb9a0535b535438';
+        'https://juejin.im/frontend/Flutter';
+//        'https://timeline-merger-ms.juejin.im/v1/get_tag_entry?src=web&tagId=5a96291f6fb9a0535b535438';
     var pageIndex = (params is Map) ? params['pageIndex'] : 0;
     final _param = {'page': pageIndex, 'pageSize': 20, 'sort': 'rankIndex'};
     var responseList = [];
@@ -59,12 +60,15 @@ class SubPageState extends State<SubPage> with AutomaticKeepAliveClientMixin {
 
     try {
       var response = await NetUtils.get(juejin_flutter, _param);
-      responseList = response['d']['entrylist'];
-      pageTotal = response['d']['total'];
+      print("返回值sub_page=====$response");
+      responseList = response['d']['entrylist'] as List;
+      pageTotal = response['d']['total'] as int ;
       if (!(pageTotal is int) || pageTotal <= 0) {
         pageTotal = 0;
       }
-    } catch (e) {}
+    } catch (e) {
+      print("处处错误====sub_page.dart------$e");
+    }
     pageIndex += 1;
     List resultList = new List();
     for (int i = 0; i < responseList.length; i++) {

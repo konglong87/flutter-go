@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import 'package:flutter_go/views/fourth_page/pages.dart';
+import 'package:flutter_go/views/fourth_page/Fpages.dart';
 
 class PagerIndicator extends StatelessWidget {
   final PagerIndicatorViewModel viewModel;

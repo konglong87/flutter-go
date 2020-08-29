@@ -1,6 +1,5 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
-
 import '../../routers/application.dart';
 import '../../routers/routers.dart';
 import '../../utils/shared_preferences.dart';
@@ -10,35 +9,35 @@ final pages = [
       const Color(0xFFcd344f),
       //'assets/mountain.png',
       'assets/images/p2.png',
-      'FlutterGo是什么？',
-      '【FlutterGo】 是由"阿里拍卖"前端团队几位 Flutter 粉丝，用业余时间开发的一款，用于 Flutter 教学帮助的App，这里没有高大尚的概念，只有一个一个亲历的尝试，用最直观的方式展示的 Flutter 官方demo',
+      'sz是什么？',
+      '【sz】 是由"拍卖"前端团队几位 suznong 粉丝，用业余时间开发的一款，用于 sunzong 教学帮助的App，这里没有高大尚的概念，只有一个一个亲历的尝试，用最直观的方式展示的 pua 官方demo',
       'assets/images/plane.png'),
   PageViewModel(
       const Color(0xFF638de3),
       //'assets/world.png',
       'assets/images/p1.png',
-      'FLutterGo的背景',
-      '🐢 官网文档示例较不够健全，不够直观\n🐞 运行widget demo要到处翻阅资料\n🐌 英文文档翻译生涩难懂，学习资料太少\n🚀 需要的效果不知道用哪个widget\n',
+      'SunzongGo的背景',
+      '🐢 官网文档示例较不够健全，不够直观\n🐞 运行pua demo要到处翻阅资料\n🐌 英文文档翻译生涩难懂，学习资料太少\n🚀 需要的效果不知道用哪个pua话术\n',
       'assets/images/calendar.png'),
   PageViewModel(
     const Color(0xFFFF682D),
     //'assets/home.png',
     'assets/images/p3.png',
-    'FlutterGo的特点',
-    '🐡 详解常用widget多达 140+ 个\n🦋 持续迭代追新官方版本\n🐙 配套Demo详解widget用法\n🚀 一站式搞定所有常用widget,开箱即查\n',
+    'SunZong这个人Go的特点',
+    '🐡 详解常用pua多达 140+ 个场景\n🦋 持续迭代追新官方版本\n🐙 配套Demo详解pua用法\n🚀 一站式搞定所有常用pua,开箱即查\n',
     'assets/images/house.png',
   ),
 ];
 SpUtil sp;
 
-class Page extends StatelessWidget {
+class SzPage extends StatelessWidget {
   final PageViewModel viewModel;
   final double percentVisible;
-  Page({
+  SzPage({
     this.viewModel,
     this.percentVisible = 1.0,
   });
-  _goHomePage(context) {
+  _goHomePage(BuildContext context) {
     Navigator.of(context)
         .pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
   }

@@ -1,6 +1,7 @@
 name: flutter_go
 description: flutter_go
 
+#publish_to: 'none'
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
 # followed by an optional build number separated by a +.
@@ -29,15 +30,15 @@ dependencies:
   share: ^0.6.1+1
   flutter_spinkit: "^3.1.0"
   fluttertoast: ^3.1.0
-  dio: ^2.0.15
+  dio: ^3.0.9
   flutter_webview_plugin: ^0.3.5
   cookie_jar: ^1.0.0
   # 日期格式化
   intl: 0.15.7
   city_pickers: ^0.0.1
-  firebase_analytics: ^1.1.0
+ # firebase_analytics: ^1.1.0
   #firebase_auth: ^0.8.3 #auth
-  firebase_core: ^0.3.4 # add dependency for Firebase Core
+ # firebase_core: ^0.3.4 # add dependency for Firebase Core
   flutter_bloc: ^0.11.1
   bloc: ^0.12.0
   html: ^0.14.0+2
@@ -51,7 +52,7 @@ dependencies:
   open_file: ^2.0.1+2
   package_info: ^0.4.0+3
   flutter_jpush: ^0.0.4
-  zefyr: ^0.8.0
+  zefyr: ^0.11.0
   pull_to_refresh: ^1.5.6
 
 

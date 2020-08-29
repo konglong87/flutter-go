@@ -1,6 +1,7 @@
 import 'dart:async' show Future;
 
 import 'package:fluro/fluro.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_go/model/collection.dart';
 import 'package:flutter_go/model/version.dart';
 import 'package:flutter_go/model/widget.dart';
@@ -19,7 +20,9 @@ class DataUtils {
   static Future doLogin(Map<String, String> params) async {
     var response = await NetUtils.post(Api.DO_LOGIN, params);
     try {
-      UserInformation userInfo = UserInformation.fromJson(response['data']);
+      Map<String,dynamic> mm = response['data'] as Map<String,dynamic> ;
+      UserInformation userInfo = UserInformation.fromJson(mm);
+//      UserInformation userInfo = UserInformation.fromJson(response['data']);
       return userInfo;
     } catch (err) {
       return response['message'];
@@ -30,10 +33,11 @@ class DataUtils {
   static Future<UserInformation> getUserInfo(Map<String, String> params) async {
     var response = await NetUtils.get(Api.GET_USER_INFO, params);
     try {
-      UserInformation userInfo = UserInformation.fromJson(response['data']);
+      Map<String,dynamic> mm = response['data'] as Map<String,dynamic> ;
+      UserInformation userInfo = UserInformation.fromJson(mm);
       return userInfo;
     } catch (err) {
-      return response['message'];
+      return response['message'] as Future<UserInformation> ;
     }
   }
 
@@ -42,9 +46,9 @@ class DataUtils {
     var response = await NetUtils.get(Api.CHECK_LOGIN);
     print('response: $response');
     try {
-      if (response['success']) {
-        print('${response['success']}   ${response['data']}  response[succes]');
-        UserInformation userInfo = UserInformation.fromJson(response['data']);
+      if (response['success'].toString() == "true") {
+        print('[data_utils结果]====>>    ${response['success']}   ${response['data']}  response[succes]');
+        UserInformation userInfo = UserInformation.fromJson(response['data'] as Map<String,dynamic>);
         print('${response['data']} $userInfo');
         return userInfo;
       } else {
@@ -56,7 +60,7 @@ class DataUtils {
   }
 
   // 一键反馈
-  static Future feedback(Map<String, String> params, context) async {
+  static Future feedback(Map<String, String> params,BuildContext context) async {
     var response = await NetUtils.post(Api.FEEDBACK, params);
     if (response['status'] == 401 && response['message'] == '请先登录') {
       Application.router.navigateTo(context, '${Routes.loginPage}',
@@ -66,33 +70,34 @@ class DataUtils {
   }
 
   //设置主题颜色
-  static Future<bool> setThemeColor(int color, context) async {
+  static Future<bool> setThemeColor(int color, BuildContext context) async {
     var response =
         await NetUtils.post(Api.SET_THEMECOLOR, {'color': color.toString()});
     if (response['status'] == 401 && response['message'] == '请先登录') {
       Application.router.navigateTo(context, '${Routes.loginPage}',
           transition: TransitionType.nativeModal);
     }
-    return response['success'];
+    return response['success'] as Future<bool>;
   }
 
   //获取主题颜色
   static Future<String> getThemeColor() async {
     var response = await NetUtils.get(Api.GET_THEMECOLOR);
-    return response['success'];
+    Future<String> bb =  response['success'] as Future<String>;
+    return bb;
   }
 
   // 退出登陆
   static Future<bool> logout() async {
     var response = await NetUtils.get(Api.LOGOUT);
     print('退出登陆 $response');
-    return response['success'];
+    return response['success'] as Future<bool>;
   }
 
   // 检查版本
   static Future<bool> checkVersion(Map<String, String> params) async {
     var response = await NetUtils.get(Api.VERSION, params);
-    Version version = Version.formJson(response);
+    Version version = Version.formJson(response as Map<String,dynamic> );
     var currVersion = version.data.version;
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     var localVersion = packageInfo.version;
@@ -111,8 +116,8 @@ class DataUtils {
     try {
       var response = await NetUtils.get(Api.GET_WIDGET_TREE);
       print('组件树dddd：$response');
-      if (response != null && response['success']) {
-        return response['data'];
+      if (response != null && response['success'] as bool) {
+        return response['data'] as List;
       } else {
         return [];
       }
@@ -127,7 +132,7 @@ class DataUtils {
     print('url 地址：${Api.CHECK_COLLECTED} $params');
     try {
       var response = await NetUtils.post(Api.CHECK_COLLECTED, params);
-      return response != null && response['hasCollected'];
+      return response != null && response['hasCollected'] as bool;
     } catch (error) {
       print('校验收藏 error $error');
       return false;
@@ -135,27 +140,27 @@ class DataUtils {
   }
 
   // 添加收藏
-  static Future addCollected(Map<String, String> params, context) async {
+  static Future addCollected(Map<String, String> params, BuildContext context) async {
     var response = await NetUtils.post(Api.ADD_COLLECTION, params);
     if (response['status'] == 401 && response['message'] == '请先登录') {
       Application.router.navigateTo(context, '${Routes.loginPage}',
           transition: TransitionType.nativeModal);
     }
-    return response != null && response['success'];
+    return response != null && response['success'] as bool;
   }
 
   // 移出收藏
-  static Future removeCollected(Map<String, String> params, context) async {
+  static Future removeCollected(Map<String, String> params,BuildContext context) async {
     var response = await NetUtils.post(Api.REMOVE_COLLECTION, params);
     if (response['status'] == 401 && response['message'] == '请先登录') {
       Application.router.navigateTo(context, '${Routes.loginPage}',
           transition: TransitionType.nativeModal);
     }
-    return response != null && response['success'];
+    return response != null && response['success'] as bool;
   }
 
   // 获取全部收藏
-  static Future getAllCollections(context) async {
+  static Future getAllCollections(BuildContext context) async {
     var response = await NetUtils.get(Api.GET_ALL_COLLECTION);
     List<Collection> responseList = [];
     if (response['status'] == 401 && response['message'] == '请先登录') {
@@ -163,8 +168,8 @@ class DataUtils {
           transition: TransitionType.nativeModal);
     }
     if (response != null && response['success'] == true) {
-      for (int i = 0; i < response['data'].length; i++) {
-        Map<String, dynamic> tempCo = response['data'][i];
+      for (int i = 0; i < (response['data'] as List).length; i++) {
+        Map<String, dynamic> tempCo = (response['data'] as List)[i] as    Map<String, dynamic> ;
         responseList.add(Collection.fromJSON(
             {"name": tempCo['name'], "router": tempCo['url']}));
       }
@@ -179,20 +184,20 @@ class DataUtils {
     var response = await NetUtils.get(Api.SEARCH_WIDGET, {"name": name});
     List<WidgetPoint> list = [];
     if (response != null && response['success'] == true) {
-      for (int i = 0; i < response['data'].length; i++) {
+      for (int i = 0; i < (response['data'] as List).length ; i++) {
         var json = response['data'][i];
         String routerName;
         if (json['display'] == 'old') {
-          routerName = json['path'];
+          routerName = json['path'].toString();
         } else {
-          routerName = json['pageId'];
+          routerName = json['pageId'].toString();
         }
         Map<String, dynamic> tempMap = {
           "name": json['name'],
           "cnName": json['name'],
           "routerName": routerName,
           "catId": json['parentId'].runtimeType == String
-              ? int.parse(json['parentId'])
+              ? int.parse(json['parentId'].toString())
               : json['parentId']
         };
         list.add(WidgetPoint.fromJSON(tempMap));

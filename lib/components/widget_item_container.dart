@@ -32,7 +32,7 @@ class WidgetItemContainer extends StatelessWidget {
     String targetRouter = '/category/error/404';
     widgetDemosList.forEach((item) {
       if (item.name == targetName) {
-        targetRouter = item.routerName;
+        targetRouter = item.routerName as String;
         targetRouter = targetRouter.toLowerCase();
       }
     });
@@ -53,7 +53,7 @@ class WidgetItemContainer extends StatelessWidget {
     );
   }
 
-  List<Widget> _buildColumns(context) {
+  List<Widget> _buildColumns( BuildContext context) {
     List<Widget> _listWidget = [];
     List<Widget> _listRows = [];
     int addI;

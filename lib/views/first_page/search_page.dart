@@ -19,10 +19,10 @@ final _industryPage = Industry.IndustryPage(itemTitle: (state) {
           size: 32,
         ),
         title: Text(
-          state.res[index].title,
+          state.res[index].title as String,
           overflow: TextOverflow.ellipsis,
         ),
-        subtitle: Text(state.res[index].source),
+        subtitle: Text(state.res[index].source.toString()),
         onTap: () {
           // 在这里对选中的结果进行解析
           print(state.res[index].source);
@@ -30,13 +30,13 @@ final _industryPage = Industry.IndustryPage(itemTitle: (state) {
           final itemUrl = state.res[index].source;
           Application.router.navigateTo(
             context,
-            '${Routes.webViewPage}?title=${Uri.encodeComponent(itemTitle)}&url=${Uri.encodeComponent(itemUrl)}',
+            '${Routes.webViewPage}?title=${Uri.encodeComponent(itemTitle.toString())}&url=${Uri.encodeComponent(itemUrl.toString())}',
             transition: TransitionType.nativeModal,
           );
         },
       );
     },
-    itemCount: state.res.length,
+    itemCount: state.res.length as int,
   );
 });
 
@@ -105,7 +105,6 @@ class _SearchBarPageState extends State<SearchBarPage> {
   Timer _resultsTimer;
 
   String oldKey;
-
   /// 防抖函数
   Future getResultsDebounced(String text) async {
     if (oldKey == text) {
@@ -173,7 +172,7 @@ class _SearchBarPageState extends State<SearchBarPage> {
                           controller: controller,
                           decoration: InputDecoration(
                               contentPadding: EdgeInsets.only(top: 0.0),
-                              hintText: '全网搜索 Flutter 相关知识库',
+                              hintText: '全网搜索 sz 相关知识库',
                               hintStyle: TextStyle(fontSize: 12.0),
                               border: InputBorder.none),
                           onChanged: onSearchTextChanged,

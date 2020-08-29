@@ -51,9 +51,9 @@ class _MyHomePageState extends State<AppPage>
   List<Widget> _list = List();
   int _currentIndex = 0;
   List tabData = [
-    {'text': 'WIDGET', 'icon': Icon(Icons.extension)},
-    {'text': '关于手册', 'icon': Icon(Icons.import_contacts)},
-    {'text': '个人中心', 'icon': Icon(Icons.account_circle)},
+    {'text': '孙总狼虎', 'icon': Icon(Icons.extension)},
+    {'text': '孙总手册', 'icon': Icon(Icons.import_contacts)},
+    {'text': '孙总中心', 'icon': Icon(Icons.account_circle)},
     //https://flutter-go.pub/api/isInfoOpen
   ];
   List<BottomNavigationBarItem> _myTabs = [];
@@ -67,18 +67,19 @@ class _MyHomePageState extends State<AppPage>
 
     if (Application.pageIsOpen == true) {
       // 是否展开业界动态
-      tabData.insert(0, {'text': '业界动态', 'icon': Icon(Icons.language)});
+      tabData.insert(0, {'text': '孙总动态', 'icon': Icon(Icons.language)});
       _list
         //..add(FirstPage())
         ..add(MainPage(userInfo: widget.userInfo));
     }
-    appBarTitle = tabData[0]['text'];
+
+    appBarTitle = tabData[0]['text'].toString();
 
     for (int i = 0; i < tabData.length; i++) {
       _myTabs.add(BottomNavigationBarItem(
-        icon: tabData[i]['icon'],
+        icon: Image.network(tabData[i]['icon'].toString()),
         title: Text(
-          tabData[i]['text'],
+          tabData[i]['text'].toString(),
         ),
       ));
     }
@@ -95,8 +96,8 @@ class _MyHomePageState extends State<AppPage>
 
   initSearchHistory() async {
     sp = await SpUtil.getInstance();
-    String json = sp.getString(SharedPreferencesKeys.searchHistory);
-    print("json $json");
+    String json = sp.getString(SharedPreferencesKeys.searchHistory).toString();
+    print("[home.dart的东西====]==>json $json");
     searchHistoryList = SearchHistoryList.fromJSON(json);
   }
 
@@ -115,14 +116,17 @@ class _MyHomePageState extends State<AppPage>
       if (value != '') {
         print('value ::: $value');
         // List<WidgetPoint> list = await widgetControl.search(value);
-        List<WidgetPoint> list = await DataUtils.searchWidget(value);
+//kkkkk        List<WidgetPoint> list = await DataUtils.searchWidget(value);
+var res = await DataUtils.searchWidget(value.toString());
+
+        List<WidgetPoint> list  = res as List<WidgetPoint>;
         return list
             .map((item) => new MaterialSearchResult<String>(
-                  value: item.name,
-                  icon: WidgetName2Icon.icons[item.name] ?? null,
+                  value: item.name as String,
+//                  icon: Image.network( WidgetName2Icon.icons[item.name].toString() )?? null,
                   text: 'widget',
                   onTap: () {
-                    onWidgetTap(item, context);
+                    onWidgetTap(item as WidgetPoint, context);
                   },
                 ))
             .toList();
@@ -132,7 +136,7 @@ class _MyHomePageState extends State<AppPage>
     }, (value) {}, () {});
   }
 
-  renderAppBar(BuildContext context, Widget widget, int index) {
+ AppBar renderAppBar(BuildContext context, Widget widget, int index) {
     if (index == 1 && Application.pageIsOpen == true) {
       return AppBar(title: buildSearchInput(context));
     } else if (index == 0 && Application.pageIsOpen == false) {
@@ -143,7 +147,8 @@ class _MyHomePageState extends State<AppPage>
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: renderAppBar(context, widget, _currentIndex),
+      appBar:
+      renderAppBar(context, widget, _currentIndex),
       body: IndexedStack(
         index: _currentIndex,
         children: _list,
@@ -166,7 +171,7 @@ class _MyHomePageState extends State<AppPage>
   void _itemTapped(int index) {
     setState(() {
       _currentIndex = index;
-      appBarTitle = tabData[index]['text'];
+      appBarTitle = tabData[index]['text'].toString();
     });
   }
 }

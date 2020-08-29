@@ -22,9 +22,9 @@ class _Page {
 }
 
 final List<_Page> _allPages = <_Page>[
-  _Page('热门资讯', 1),
-  _Page('FG-官网', 2),
-  _Page('FG-web版', 3),
+  _Page('热门sz', 1),
+  _Page('sz-官网', 2),
+  _Page('sz-web', 3),
 
   ///_Page('项目4'),
 ];
@@ -44,7 +44,8 @@ class MainPage extends StatelessWidget {
                 child: ClipOval(
               child: Image.network(
                 userInfo.id == 0
-                    ? 'https://hbimg.huabanimg.com/9bfa0fad3b1284d652d370fa0a8155e1222c62c0bf9d-YjG0Vt_fw658'
+//                    ? 'https://hbimg.huabanimg.com/9bfa0fad3b1284d652d370fa0a8155e1222c62c0bf9d-YjG0Vt_fw658'
+                    ? 'https://www.ivsky.com/tupian/keai_de_xiaogou_v27689/pic_507639.html#al_tit'
                     : userInfo.avatarPic,
                 scale: 15.0,
               ),
@@ -87,7 +88,8 @@ class TabLayout extends StatelessWidget {
             DefaultTabController.of(context).animateTo(0);
             Application.router.navigateTo(
               context,
-              '${Routes.webViewPage}?title=${Uri.encodeComponent('Flutter Go 官方网站')}&url=${Uri.encodeComponent('https://flutter-go.pub')}',
+              '${Routes.webViewPage}?title=${Uri.encodeComponent('sunzong Go 官方网站')}&url=${Uri.encodeComponent('https://juejin.im/tag/Flutter?utm_source=flutterchina&utm_medium=word&utm_content=btn&utm_campaign=q3_website')}',
+//              '${Routes.webViewPage}?title=${Uri.encodeComponent('Flutter Go 官方网站')}&url=${Uri.encodeComponent('https://flutter-go.pub')}',
               transition: TransitionType.nativeModal,
             );
           } else if (index == 2) {
@@ -98,7 +100,8 @@ class TabLayout extends StatelessWidget {
             DefaultTabController.of(context).animateTo(0);
             Application.router.navigateTo(
               context,
-              '${Routes.webViewPage}?title=${Uri.encodeComponent('Flutter Go web版(H5)')}&url=${Uri.encodeComponent('https://flutter-go.pub/flutter_go_web')}',
+              '${Routes.webViewPage}?title=${Uri.encodeComponent('sunzong Go web版(H5)')}&url=${Uri.encodeComponent('https://www.coudidi.com')}',
+//              '${Routes.webViewPage}?title=${Uri.encodeComponent('Flutter Go web版(H5)')}&url=${Uri.encodeComponent('https://flutter-go.pub/flutter_go_web')}',
               transition: TransitionType.nativeModal,
             );
           }

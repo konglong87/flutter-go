@@ -248,18 +248,18 @@ class _LoginPageState extends State<LoginPage> {
                 .then((value) {
               print('存储成功:$value');
               Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(builder: (context) => AppPage(userResult)),
+                  MaterialPageRoute(builder: (context) => AppPage(userResult as UserInformation)),
                   (route) => route == null);
             });
           });
         } catch (err) {
           Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (context) => AppPage(userResult)),
+              MaterialPageRoute(builder: (context) => AppPage(userResult as UserInformation)),
               (route) => route == null);
         }
       } else if (userResult.runtimeType == String) {
         Fluttertoast.showToast(
-            msg: userResult,
+            msg: userResult as String,
             toastLength: Toast.LENGTH_SHORT,
             gravity: ToastGravity.CENTER,
             timeInSecForIos: 1,
@@ -350,7 +350,7 @@ class _LoginPageState extends State<LoginPage> {
                             height: 30.0,
                           ),
                           Image.asset(
-                            'assets/images/FlutterGo.png',
+                            'assets/images/loginsz001.png',
                             fit: BoxFit.contain,
                             width: 60.0,
                             height: 60.0,
@@ -386,7 +386,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           FlatButton(
                             child: Text(
-                              '游客登录',
+                              '孙总登录',
                               style: TextStyle(
                                   color: Theme.of(context).primaryColor,
                                   decoration: TextDecoration.underline),

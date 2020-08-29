@@ -1,6 +1,6 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_go/utils/analytics.dart' show analytics;
+//import 'package:flutter_go/utils/analytics.dart' show analytics;
 import '../widgets/index.dart';
 import './router_handler.dart';
 
@@ -39,11 +39,11 @@ class Routes {
       Handler handler = new Handler(handlerFunc:
           (BuildContext context, Map<String, List<String>> params) {
         print('组件路由params=$params widgetsItem=${demo.routerName}');
-        analytics
-            .logEvent(name: 'component', parameters: {'name': demo.routerName});
-        return demo.buildRouter(context);
+//        analytics
+//            .logEvent(name: 'component', parameters: {'name': demo.routerName});
+        return demo.buildRouter(context) as Widget;
       });
-      String path = demo.routerName;
+      String path = demo.routerName.toString();
       router.define('${path.toLowerCase()}', handler: handler);
     });
 //    router.define(webViewPage,handler:webViewPageHand);

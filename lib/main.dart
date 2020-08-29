@@ -26,11 +26,16 @@ var db;
 
 class MyApp extends StatefulWidget {
   MyApp() {
+    print("第一行");
     final router = new Router();
     Routes.configureRoutes(router);
     // 这里设置项目环境
     Application.router = router;
+
+    print("-----------------------9999999-------------------");
+
   }
+
 
   @override
   _MyAppState createState() => _MyAppState();
@@ -52,6 +57,8 @@ class _MyAppState extends State<MyApp> {
 
   /// 服务端控制是否显示业界动态
   Future _reqsMainPageIsOpen() async {
+
+//    const reqs = 'https://www.coudidi.com';
     const reqs = 'https://flutter-go.pub/api/isInfoOpen';
     var response;
     try {
@@ -63,8 +70,12 @@ class _MyAppState extends State<MyApp> {
           response['data']['isOpen'] == true) {
         Application.pageIsOpen = true;
         print('是否需要展开【业界动态】${Application.pageIsOpen}');
+      }else{
+        print("进了else");
       }
     } catch (e) {
+      print("出错了【显示业界动态】$e");
+
       print('response-$e');
     }
     return response;
@@ -72,6 +83,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
+    print("这是初始化函数");
     super.initState();
     _reqsMainPageIsOpen();
     _startupJpush();
@@ -131,6 +143,7 @@ class _MyAppState extends State<MyApp> {
           _hasLogin = true;
           _isLoading = false;
           _userInfo = hasLogin;
+//          _userInfo = hasLogin as UserInformation ?? null;
           // 设置初始化的主题色
           // if (hasLogin.themeColor != 'default') {
           //   themeColor = int.parse(hasLogin.themeColor);
@@ -138,6 +151,7 @@ class _MyAppState extends State<MyApp> {
         });
       } else {
         setState(() {
+//          _hasLogin = hasLogin as bool ?? true;
           _hasLogin = hasLogin;
           _isLoading = false;
         });
@@ -166,7 +180,8 @@ class _MyAppState extends State<MyApp> {
     } else {
       // 判断是否已经登录
       if (_hasLogin) {
-        return AppPage(_userInfo);
+        return LoginPage();
+//        return AppPage(_userInfo);
       } else {
         return LoginPage();
       }
@@ -194,23 +209,32 @@ class _MyAppState extends State<MyApp> {
       home: new Scaffold(body: showWelcomePage()),
       debugShowCheckedModeBanner: false,
       onGenerateRoute: Application.router.generator,
-      navigatorObservers: <NavigatorObserver>[Analytics.observer],
+//      navigatorObservers: <NavigatorObserver>[Analytics.observer],
     );
   }
 }
 
 void _startupJpush() async {
-  print("初始化jpush");
+  print("初始化jpush==========================");
   await FlutterJPush.startup();
   print("初始化jpush成功");
 }
 
 void main() async {
+  print("-----------------------zreo-------------------");
   WidgetsFlutterBinding.ensureInitialized();
+
+  print("-----------------------111111-------------------");
   final provider = new Provider();
   await provider.init(true);
-  sp = await SpUtil.getInstance();
-  new SearchHistoryList(sp);
+
+
+  print("-----------------------1112222-------------------");
+
+//  sp = await SpUtil.getInstance();
+//  new SearchHistoryList(sp);
+
+  print("-----------------------2222-------------------");
 
   await DataUtils.getWidgetTreeList().then((List json) {
     List data =
@@ -218,6 +242,10 @@ void main() async {
     Application.widgetTree = WidgetTree.buildWidgetTree(data);
     print("Application.widgetTree>>>> ${Application.widgetTree}");
   });
+
+  print("--------------R---------3333-------------------");
   db = Provider.db;
+  print("-----------------------4444-------------------");
   runApp(new MyApp());
+  print("-----------------------666666-------------------");
 }
