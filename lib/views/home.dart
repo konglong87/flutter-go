@@ -114,7 +114,7 @@ class _MyHomePageState extends State<AppPage>
   Widget buildSearchInput(BuildContext context) {
     return new SearchInput((value) async {
       if (value != '') {
-        print('value ::: $value');
+        print('[搜索输入的]value ::: $value');
         // List<WidgetPoint> list = await widgetControl.search(value);
 //kkkkk        List<WidgetPoint> list = await DataUtils.searchWidget(value);
 var res = await DataUtils.searchWidget(value.toString());

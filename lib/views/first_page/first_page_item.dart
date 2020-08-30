@@ -42,7 +42,7 @@ class FirstPageItem {
       tag: '$_tag${json['category']['name']}',
       username: json['user']['username'] as String,
       createdTime: Util.getTimeDuration(json['createdAt'].toString()),
-      title: json['title'].toString(),
+      title: json['title'].toString() ?? "sz",
       detailUrl: json['originalUrl'].toString(),
       isCollection: json['type'].toString(),
     );

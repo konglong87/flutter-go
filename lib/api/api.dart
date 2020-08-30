@@ -1,6 +1,7 @@
 class Api {
 //   static const String BASE_URL = 'http://flutter-go.alibaba.net/';
-  static const String BASE_URL = 'https://flutter-go.pub/api/';
+  static const String BASE_URL = 'https://juejin.im/';
+//  static const String BASE_URL = 'https://flutter-go.pub/api/';
 
   static const String DO_LOGIN = BASE_URL + 'doLogin'; //登陆
 
@@ -32,5 +33,5 @@ class Api {
 
   static const String GET_WIDGET_TREE = BASE_URL + 'getCateList'; //获取widget列表树
 
-  static const String SEARCH_WIDGET = BASE_URL + 'searchWidget'; //搜索组件
+  static const String SEARCH_WIDGET = BASE_URL + 'search?query='; //搜索组件
 }

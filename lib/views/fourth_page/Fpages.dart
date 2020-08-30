@@ -10,20 +10,20 @@ final pages = [
       //'assets/mountain.png',
       'assets/images/p2.png',
       'sz是什么？',
-      '【sz】 是由"拍卖"前端团队几位 suznong 粉丝，用业余时间开发的一款，用于 sunzong 教学帮助的App，这里没有高大尚的概念，只有一个一个亲历的尝试，用最直观的方式展示的 pua 官方demo',
+      '【sz】 是由"拍卖"前端团队几位 suznong 粉丝，用业余时间开发的一款，用于 sunzong-pua 教学帮助的App，这里没有高大尚的概念，只有一个一个亲历的尝试，用最直观的方式展示的 pua 官方demo',
       'assets/images/plane.png'),
   PageViewModel(
       const Color(0xFF638de3),
       //'assets/world.png',
       'assets/images/p1.png',
       'SunzongGo的背景',
-      '🐢 官网文档示例较不够健全，不够直观\n🐞 运行pua demo要到处翻阅资料\n🐌 英文文档翻译生涩难懂，学习资料太少\n🚀 需要的效果不知道用哪个pua话术\n',
+      '🐢 官网文档示例较不够健全，不够直观\n🐞 执行pua demo要到处翻阅资料\n🐌 英文文档翻译生涩难懂，学习资料太少\n🚀 需要的效果不知道用哪个pua话术\n',
       'assets/images/calendar.png'),
   PageViewModel(
     const Color(0xFFFF682D),
     //'assets/home.png',
     'assets/images/p3.png',
-    'SunZong这个人Go的特点',
+    'SunZong这个人的特点',
     '🐡 详解常用pua多达 140+ 个场景\n🦋 持续迭代追新官方版本\n🐙 配套Demo详解pua用法\n🚀 一站式搞定所有常用pua,开箱即查\n',
     'assets/images/house.png',
   ),
@@ -53,7 +53,8 @@ class SzPage extends StatelessWidget {
           } else if (type == 'goGithub') {
             Application.router.navigateTo(
               context,
-              '${Routes.webViewPage}?title=${Uri.encodeComponent(txt)} Doc&&url=${Uri.encodeComponent("https://github.com/alibaba/flutter-go")}',
+              '${Routes.webViewPage}?title=${Uri.encodeComponent(txt)} Doc&&url=${Uri.encodeComponent("https://github.com/SunYH1999/point")}',
+//              '${Routes.webViewPage}?title=${Uri.encodeComponent(txt)} Doc&&url=${Uri.encodeComponent("https://github.com/alibaba/flutter-go")}',
               transition: TransitionType.nativeModal,
             );
           }
@@ -100,7 +101,7 @@ class SzPage extends StatelessWidget {
                 context,
                 'GitHub',
                 Icons.arrow_forward,
-                'goGithub',
+                'go-sz-Github',
               )),
         ]);
   }

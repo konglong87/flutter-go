@@ -25,7 +25,7 @@ final _industryPage = Industry.IndustryPage(itemTitle: (state) {
         subtitle: Text(state.res[index].source.toString()),
         onTap: () {
           // 在这里对选中的结果进行解析
-          print(state.res[index].source);
+          print("[选中的结果解析]   ${state.res[index].source}");
           final itemTitle = state.res[index].title;
           final itemUrl = state.res[index].source;
           Application.router.navigateTo(
@@ -128,7 +128,7 @@ class _SearchBarPageState extends State<SearchBarPage> {
   }
 
   void onSearchTextChanged(String text) {
-    print('onSearchTextChanged:$text');
+    print('【全网搜索】onSearchTextChanged:$text');
     //suggestion.dispatch(SuggestionFetch(query: text));
     getResultsDebounced(text);
   }

@@ -44,16 +44,18 @@ class Api {
 //        "https://www.qidian.com/ajax/Search/AutoComplete?siteid=1&query=$query");
     /// var response = await dio.get("https://www.qidian.com/ajax/Search/AutoComplete?siteid=1&query=$query", data: {});
     var response =
-        await dio.get("https://www.so.com/s?ie=utf-8&q=$query flutter");
+//        await dio.get("https://www.baidu.com/s?ie=UTF-8&wd=$query");
+//        await dio.get("https://www.so.com/s?ie=utf-8&fr=none&src=360sou_newhome&nlpv=basesc&q=$query");
+        await dio.get("https://www.so.com/s?ie=utf-8&q=$query");
     var document = parse(response.data);
     var app = document.querySelectorAll('.res-title a');
 
-    ///print('1=====>${query}');
-    ///print('2=====>${response.data}');
-    ////print('3=====>${app}');
+    print('[blocs得得得]1=====>${query}');
+    print('[blocs得得得]2=====>${response.data}');
+    print('[blocs得得得]3=====>${app}');
     List<SearchResult> res = [];
     app.forEach((f) {
-      ///print('f==>${f}');
+      print('[blocs得得得]f==>${f}');
       res.add(
         SearchResult(
           title: f.text,

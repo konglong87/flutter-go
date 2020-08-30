@@ -12,6 +12,8 @@ import './industry_api.dart';
 import './industry_event.dart';
 import './industry_state.dart';
 
+
+//实际搜索页
 class SuggestionBloc extends Bloc<SuggestionEvent, SuggestionState> {
   @override
   SuggestionState get initialState => SuggestionUninitialized();
