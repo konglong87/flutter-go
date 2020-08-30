@@ -91,7 +91,7 @@ class DrawPainter extends CustomPainter {
     Size size,
     Path path,
   ) {
-    switch (type) {
+    switch (type.toString()) {
       case 'simpleline':
         //新建了一个path,然后将路径起始点移动到坐标(100,100)的位置
         Path path = new Path()..moveTo(0.0, 0.0);

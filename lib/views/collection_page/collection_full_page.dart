@@ -45,7 +45,7 @@ class _CollectionFullPageState extends State<CollectionFullPage> {
     DataUtils.getAllCollections(context).then((collectionList) {
       if (this.mounted) {
         setState(() {
-          _collectionList = collectionList;
+          _collectionList = collectionList as List<Collection>;
         });
       }
     });
@@ -57,7 +57,7 @@ class _CollectionFullPageState extends State<CollectionFullPage> {
     super.dispose();
   }
 
-  Widget _renderList(context, index) {
+  Widget _renderList(BuildContext context, int index) {
     if (index == 0) {
       return Container(
         height: 40.0,
@@ -76,8 +76,8 @@ class _CollectionFullPageState extends State<CollectionFullPage> {
         ),
       );
     }
-    if (_collectionList[index - 1].router.contains('http')) {
-      if (_collectionList[index - 1].name.endsWith('Doc')) {
+    if (_collectionList[(index as int) - 1].router.contains('http')) {
+      if (_collectionList[(index as int) - 1].name.endsWith('Doc')) {
         _icons = Icons.library_books;
       } else {
         _icons = Icons.language;
@@ -85,7 +85,7 @@ class _CollectionFullPageState extends State<CollectionFullPage> {
     } else {
       _icons = Icons.extension;
     }
-    String targetRouter = _collectionList[index - 1].router;
+    String targetRouter = _collectionList[(index as int) - 1].router;
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 5.0),
       margin: const EdgeInsets.only(bottom: 7.0),
@@ -102,7 +102,7 @@ class _CollectionFullPageState extends State<CollectionFullPage> {
       ),
       child: ListTile(
         leading: Icon(
-          _icons,
+          _icons as IconData,
           size: 30.0,
           color: Theme.of(context).primaryColor,
         ),
@@ -132,7 +132,7 @@ class _CollectionFullPageState extends State<CollectionFullPage> {
                 fit: BoxFit.contain,
                 width: MediaQuery.of(context).size.width / 2,
               ),
-              Text('暂无收藏，赶紧去收藏一个吧!'),
+              Text('暂无收藏，赶紧去收藏一个sz吧!'),
             ],
           ),
         ],

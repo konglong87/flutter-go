@@ -142,7 +142,8 @@ class _MyAppState extends State<MyApp> {
         setState(() {
           _hasLogin = true;
           _isLoading = false;
-          _userInfo = hasLogin;
+          _userInfo = hasLogin as UserInformation;
+          print("main主函数===_userInfo====> $_userInfo");
 //          _userInfo = hasLogin as UserInformation ?? null;
           // 设置初始化的主题色
           // if (hasLogin.themeColor != 'default') {
@@ -152,7 +153,7 @@ class _MyAppState extends State<MyApp> {
       } else {
         setState(() {
 //          _hasLogin = hasLogin as bool ?? true;
-          _hasLogin = hasLogin;
+          _hasLogin = hasLogin as bool ?? true;
           _isLoading = false;
         });
       }
@@ -206,7 +207,7 @@ class _MyAppState extends State<MyApp> {
           size: 35.0,
         ),
       ),
-      home: new Scaffold(body: showWelcomePage()),
+      home: new Scaffold(body: showWelcomePage() as Widget),
       debugShowCheckedModeBanner: false,
       onGenerateRoute: Application.router.generator,
 //      navigatorObservers: <NavigatorObserver>[Analytics.observer],
@@ -238,7 +239,7 @@ void main() async {
 
   await DataUtils.getWidgetTreeList().then((List json) {
     List data =
-        WidgetTree.insertDevPagesToList(json, StandardPages().getLocalList());
+        WidgetTree.insertDevPagesToList(json, StandardPages().getLocalList()) as List<dynamic>;
     Application.widgetTree = WidgetTree.buildWidgetTree(data);
     print("Application.widgetTree>>>> ${Application.widgetTree}");
   });

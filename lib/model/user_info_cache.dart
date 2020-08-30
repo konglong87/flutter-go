@@ -19,7 +19,7 @@ class UserInfo implements UserInfoInterface {
   UserInfo({this.username, this.password});
 
   factory UserInfo.fromJSON(Map json) {
-    return UserInfo(username: json['username'], password: json['password']);
+    return UserInfo(username: json['username'].toString(), password: json['password'].toString());
   }
 
   Object toMap() {
@@ -50,7 +50,7 @@ class UserInfoControlModel {
     List<UserInfo> resultList = [];
     list.forEach((item) {
       print(item);
-      resultList.add(UserInfo.fromJSON(item));
+      resultList.add(UserInfo.fromJSON(item as Map<String,dynamic>));
     });
     return resultList;
   }

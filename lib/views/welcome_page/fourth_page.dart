@@ -29,8 +29,8 @@ class FourthPageState extends State<FourthPage> with TickerProviderStateMixin {
       if (mounted) {
         setState(() {
           if (event.updateType == UpdateType.dragging) {
-            slideDirection = event.direction;
-            slidePercent = event.slidePercent;
+            slideDirection = event.direction as SlideDirection;
+            slidePercent = event.slidePercent as double;
 
             if (slideDirection == SlideDirection.leftToRight) {
               nextPageIndex = activeIndex - 1;
@@ -62,8 +62,8 @@ class FourthPageState extends State<FourthPage> with TickerProviderStateMixin {
 
             animatedPageDragger.run();
           } else if (event.updateType == UpdateType.animating) {
-            slideDirection = event.direction;
-            slidePercent = event.slidePercent;
+            slideDirection = event.direction as SlideDirection;
+            slidePercent = event.slidePercent as double;
           } else if (event.updateType == UpdateType.doneAnimating) {
             if (waitingNextPageIndex != -1) {
               nextPageIndex = waitingNextPageIndex;

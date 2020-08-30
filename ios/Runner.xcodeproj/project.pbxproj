@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0828E495220692B500A59437 /* iPhone Portrait-Retina 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 0828E486220692B400A59437 /* iPhone Portrait-Retina 4.png */; };
+		0828E495220692B500A59437 /* iPhone Portrait-Retina 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0828E486220692B400A59437 /* iPhone Portrait-Retina 3.png */; };
 		0828E496220692B500A59437 /* iPad Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 0828E487220692B400A59437 /* iPad Portrait.png */; };
 		0828E497220692B500A59437 /* iPhone X_XS Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 0828E488220692B400A59437 /* iPhone X_XS Landscape.png */; };
 		0828E498220692B500A59437 /* iPhone XS Max Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 0828E489220692B400A59437 /* iPhone XS Max Portrait.png */; };
@@ -52,7 +52,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0828E486220692B400A59437 /* iPhone Portrait-Retina 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone Portrait-Retina 4.png"; sourceTree = "<group>"; };
+		0828E486220692B400A59437 /* iPhone Portrait-Retina 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone Portrait-Retina 3.png"; sourceTree = "<group>"; };
 		0828E487220692B400A59437 /* iPad Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Portrait.png"; sourceTree = "<group>"; };
 		0828E488220692B400A59437 /* iPhone X_XS Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone X_XS Landscape.png"; sourceTree = "<group>"; };
 		0828E489220692B400A59437 /* iPhone XS Max Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone XS Max Portrait.png"; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 				0828E48F220692B400A59437 /* iPad Portrait@2x.png */,
 				0828E487220692B400A59437 /* iPad Portrait.png */,
 				0828E48D220692B400A59437 /* iPhone Landscape-Retina HD 5.5.png */,
-				0828E486220692B400A59437 /* iPhone Portrait-Retina 4.png */,
+				0828E486220692B400A59437 /* iPhone Portrait-Retina 3.png */,
 				0828E48A220692B400A59437 /* iPhone Portrait-Retina HD 4.7.png */,
 				0828E493220692B500A59437 /* iPhone Portrait-Retina HD 5.5.png */,
 				0828E48E220692B400A59437 /* iPhone Portrait@2x.png */,
@@ -289,7 +289,7 @@
 				FAD0116922F1B9DF0016E673 /* Generated.xcconfig in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
 				0828E49B220692B500A59437 /* iPad Landscape@2x.png in Resources */,
-				0828E495220692B500A59437 /* iPhone Portrait-Retina 4.png in Resources */,
+				0828E495220692B500A59437 /* iPhone Portrait-Retina 3.png in Resources */,
 				0828E498220692B500A59437 /* iPhone XS Max Portrait.png in Resources */,
 				FAD0116422F1B9DF0016E673 /* Debug.xcconfig in Resources */,
 				94722E5C22511D3600F63900 /* GoogleService-Info.plist in Resources */,

@@ -40,7 +40,7 @@ class CustomViewPageState extends State<CustomViewPage>
     getImage("assets/images/painterImg.jpeg").then((data) {
       if (mounted) {
         setState(() {
-          image = data;
+          image = data as Image;
         });
       }
     });
@@ -100,7 +100,7 @@ class DrawPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    switch (type) {
+    switch (type.toString()) {
       case 'drawPoints':
         const List<Offset> points1 = [
           Offset(20.0, 0.0),
@@ -215,7 +215,7 @@ class DrawPainter extends CustomPainter {
         // canvas.drawImage(image, Offset(0.0, 0.0), painter);
         final src = Rect.fromLTWH(0.0, 0.0, 684.0, 442.0);
         final dst = Rect.fromLTWH(0.0, 0.0, size.width, size.height);
-        canvas.drawImageRect(image, src, dst, painter);
+        canvas.drawImageRect(image as ui.Image, src, dst, painter);
         break;
       case 'drawStar':
         var rect = Offset.zero & size;

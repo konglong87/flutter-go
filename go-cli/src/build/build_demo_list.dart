@@ -29,7 +29,7 @@ Future<List> buildDemoListJson() async {
     String target = '$dicPath/.demo.json';
     String jsonString = await readeFile(target);
     try  {
-      Map<String, dynamic> item = json.decode(jsonString);
+      Map<String, dynamic> item = json.decode(jsonString) as Map<String, dynamic> ;
       detailList.add(item);
     } catch (err) {
       print("err $err");

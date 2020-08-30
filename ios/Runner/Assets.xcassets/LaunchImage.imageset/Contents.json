@@ -1,35 +1,38 @@
 {
   "images" : [
     {
+      "filename" : "szdb001.png",
       "idiom" : "universal",
-      "filename" : "flutter go.png",
       "scale" : "1x"
     },
     {
+      "filename" : "szdb001.png",
       "idiom" : "universal",
-      "filename" : "flutter go-1.png",
       "scale" : "2x"
     },
     {
+      "filename" : "szdb001.png",
       "idiom" : "universal",
-      "filename" : "flutter go-2.png",
       "scale" : "3x"
     },
     {
+      "filename" : "WechatIMG100001.jpeg",
       "idiom" : "iphone",
       "scale" : "1x"
     },
     {
+      "filename" : "WechatIMG100001-1.jpeg",
       "idiom" : "iphone",
       "scale" : "2x"
     },
     {
+      "filename" : "WechatIMG100001-2.jpeg",
       "idiom" : "iphone",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

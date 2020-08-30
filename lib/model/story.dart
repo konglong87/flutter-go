@@ -11,11 +11,11 @@ class StoryModel {
           json['id'].toString(),
           json['title'].toString(),
           image: json['image'] != null
-              ? json['image']
-              : (json['images'] != null ? json['images'][0] : null),
+              ? json['image'].toString()
+              : (json['images'] != null ? json['images'][0].toString() : null),
           url: json['url'] != null
-              ? json['url']
-              : (json['url'] != null ? json['url'][0] : null),
+              ? json['url'].toString()
+              : (json['url'] != null ? json['url'][0].toString() : null),
         );
 
   Map<String, dynamic> toJson() {

@@ -27,7 +27,7 @@ class _ListViewFullDefault extends State {
 class ListViewLessDefault extends StatelessWidget {
   final widget;
   final parent;
-  final index;
+  final int index;
 
   const ListViewLessDefault([
     this.index,

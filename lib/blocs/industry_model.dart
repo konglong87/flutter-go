@@ -13,14 +13,14 @@ class Suggestion {
   Suggestion({this.query, this.suggestions, this.code});
 
   Suggestion.fromJson(Map<String, dynamic> json) {
-    query = json['query'];
+    query = json['query'].toString();
     if (json['suggestions'] != null) {
       suggestions = new List<Suggestions>();
       json['suggestions'].forEach((v) {
-        suggestions.add(new Suggestions.fromJson(v));
+        suggestions.add(new Suggestions.fromJson(v as Map<String,dynamic>));
       });
     }
-    code = json['code'];
+    code = json['code'] as int;
   }
 
   Map<String, dynamic> toJson() {
@@ -41,8 +41,8 @@ class Suggestions {
   Suggestions({this.data, this.value});
 
   Suggestions.fromJson(Map<String, dynamic> json) {
-    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
-    value = json['value'];
+    data = json['data'] != null ? new Data.fromJson(json['data'] as Map<String,dynamic>) : null;
+    value = json['value'].toString();
   }
 
   Map<String, dynamic> toJson() {
@@ -61,7 +61,7 @@ class Data {
   Data({this.category});
 
   Data.fromJson(Map<String, dynamic> json) {
-    category = json['category'];
+    category = json['category'].toString();
   }
 
   Map<String, dynamic> toJson() {

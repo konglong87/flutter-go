@@ -61,7 +61,7 @@ class _CollectionPageState extends State<CollectionPage> {
     // });
   }
 
-  Widget _renderList(context, index) {
+  Widget _renderList(BuildContext context, int index) {
     if (index == 0) {
       return Container(
         height: 40.0,
@@ -105,7 +105,7 @@ class _CollectionPageState extends State<CollectionPage> {
       ),
       child: ListTile(
         leading: Icon(
-          _icons,
+          _icons as IconData,
           size: 30.0,
           color: Theme.of(context).primaryColor,
         ),

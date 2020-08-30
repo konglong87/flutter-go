@@ -13,7 +13,7 @@ class RadioADemo extends StatefulWidget {
 
 class _Demo extends State<RadioADemo> {
   int groupValue = 1;
-  onChange(val) {
+  onChange(int val) {
     this.setState(() {
       groupValue = val;
     });
@@ -30,18 +30,18 @@ class _Demo extends State<RadioADemo> {
               value: 1,
               groupValue: groupValue, //当value和groupValue一致的时候则选中
               onChanged: (T) {
-                onChange(T);
+                onChange(T as int);
               }),
           Radio(
               value: 2,
               groupValue: groupValue,
-              onChanged: (T) {
+              onChanged: (int T) {
                 onChange(T);
               }),
           Radio(
               value: 3,
               groupValue: groupValue,
-              onChanged: (T) {
+              onChanged: (int T) {
                 onChange(T);
               })
         ],

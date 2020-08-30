@@ -57,15 +57,15 @@ class _StandardView extends State<StandardView> {
   Future<void> localGetPagesAttrsInfo() async {
     String jsonString = await DefaultAssetBundle.of(context)
         .loadString('lib/standard_pages/.pages.json');
-    List jsonList = json.decode(jsonString);
+    List jsonList = json.decode(jsonString) as List;
     Map<String, dynamic> pageDetail =
-        jsonList.firstWhere((item) => item['id'] == widget.id, orElse: null);
+        jsonList.firstWhere((item) => item['id'] == widget.id, orElse: null) as Map<String,dynamic>;
 
     if (pageDetail != null) {
       setState(() {
-        pageTitle = pageDetail['title'] ?? '请加入title';
-        author = pageDetail['author'];
-        email = pageDetail['email'];
+        pageTitle = pageDetail['title'].toString() ?? '请加入title';
+        author = pageDetail['author'].toString();
+        email = pageDetail['email'].toString();
       });
     }
   }
@@ -83,27 +83,27 @@ class _StandardView extends State<StandardView> {
       isLoading = true;
     });
 
-    List response = jsonDecode(await NetUtils.get(PagesUrl));
+    List response = jsonDecode(await NetUtils.get(PagesUrl).toString()) as List<dynamic>;
 
-    Map targetPage = response.firstWhere((page) => page['id'] == widget.id);
+    Map targetPage = response.firstWhere((page) => page['id'] == widget.id) as Map;
     if (targetPage == null) {
       setState(() {
         isLoading = false;
       });
-      return Future(() => '未获取界面相当信息');
+      return Future(() => '未获取界面相当信息,问问sz怎么回事');
     }
     setState(() {
-      pageTitle = targetPage['title'] ?? 'xxx';
-      author = targetPage['author'];
-      email = targetPage['email'];
+      pageTitle = targetPage['title'].toString() ?? 'xxx';
+      author = targetPage['author'].toString();
+      email = targetPage['email'].toString();
     });
 
-    String pageName = targetPage['name'] +
+    String pageName = targetPage['name'].toString() +
         "_" +
-        targetPage['author'] +
+        targetPage['author'].toString() +
         "_" +
-        targetPage['id'];
-    String pageContent = await NetUtils.get(githubUrl + pageName + "/index.md");
+        targetPage['id'].toString();
+    String pageContent = await NetUtils.get(githubUrl + pageName + "/index.md").toString();
     setState(() {
       isLoading = false;
     });
@@ -134,13 +134,13 @@ class _StandardView extends State<StandardView> {
   void seeSourceCode(id) async {
     List response;
     try {
-      response = jsonDecode(await NetUtils.get(DemosUrl));
+      response = jsonDecode(await NetUtils.get(DemosUrl).toString()) as List;
     } catch (e) {
       return alertDialog(msg: '请检查网络链接', title: '提示');
     }
 
     Map<String, dynamic> demoDetail =
-        response.firstWhere((item) => item['id'] == id, orElse: null);
+        response.firstWhere((item) => item['id'] == id, orElse: null)as Map<String,dynamic>;
     if (demoDetail == null) {
       return null;
     }

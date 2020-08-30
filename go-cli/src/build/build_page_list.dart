@@ -46,7 +46,7 @@ Future<List> buildPageListJson() async {
     String target = '$dicPath/.page.json';
     String jsonString = await readeFile(target);
     try  {
-      Map<String, dynamic> item = json.decode(jsonString);
+      Map<String, dynamic> item = json.decode(jsonString) as  Map<String, dynamic> ;
       detailList.add(item);
     } catch (err) {
       print("err $err");
@@ -100,14 +100,14 @@ class StandardPages {
     "pages": data
   };
 
-  String output = template.renderString(formatData);
+  String output = template.renderString(formatData).toString();
 
 
 return output;
   
 }
 Future<bool> checkPage(String path) async {
-  List files = [
+  List<String> files = [
     'index.dart',
     'index.md',
     '.page.json'

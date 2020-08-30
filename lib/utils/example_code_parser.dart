@@ -23,13 +23,13 @@ void _launchURL(String url) async {
 }
 
 Future<String> getExampleCode(
-    context, String filePath, AssetBundle bundle) async {
+    BuildContext context, String filePath, AssetBundle bundle) async {
   if (_exampleCode == null) await _parseExampleCode(context, filePath, bundle);
   return _code;
 }
 
 Future<void> _parseExampleCode(
-    context, String filePath, AssetBundle bundle) async {
+  BuildContext  context, String filePath, AssetBundle bundle) async {
   String code;
   try {
     code = await bundle.loadString('lib/widgets/$filePath');

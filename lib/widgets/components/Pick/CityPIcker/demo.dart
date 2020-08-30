@@ -14,7 +14,7 @@ class CityPickerDemo extends StatefulWidget {
 
 class _Demo extends State<CityPickerDemo> {
   String _result;
-  show(context) async {
+  show(BuildContext context) async {
     Result temp = await CityPickers.showCityPicker(
       context: context,
       // locationCode: '640221',
