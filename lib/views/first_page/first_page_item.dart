@@ -31,20 +31,20 @@ class FirstPageItem {
 
   factory FirstPageItem.fromJson(dynamic json) {
 //  factory FirstPageItem.fromJson(Map<String, dynamic> json) {
-    String _tag = '';
-    if ((json['tags'] as List).length > 0) {
-      _tag = '${json['tags'][0]['title']}/';
-    }
+//    String _tag = '';
+//    if ((json['tags'] as List).length > 0) {
+//      _tag = '${json['tags'][0]['title']}/';
+//    }
     return FirstPageItem(
-      hot: json['hot'] as bool,
-      collectionCount: json['collectionCount'] as int,
-      commentCount: json['commentsCount'] as int,
-      tag: '$_tag${json['category']['name']}',
-      username: json['user']['username'] as String,
-      createdTime: Util.getTimeDuration(json['createdAt'].toString()),
+      hot: json['hot'] as bool ?? true,
+      collectionCount: json['collectionCount'] as int ?? 22,
+      commentCount: json['commentsCount'] as int ?? 33,
+//      tag: '$_tag${json['category']['name']}',
+//      username: json['user']['username'] as String ?? "kkk",
+//      createdTime: Util.getTimeDuration(json['createdAt'].toString()),
       title: json['title'].toString() ?? "sz",
-      detailUrl: json['originalUrl'].toString(),
-      isCollection: json['type'].toString(),
+      detailUrl: json['originalUrl'].toString() ?? "www.baidu.com",
+      isCollection: json['type'].toString() ?? "2",
     );
   }
 }

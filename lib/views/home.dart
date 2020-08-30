@@ -97,7 +97,7 @@ class _MyHomePageState extends State<AppPage>
   initSearchHistory() async {
     sp = await SpUtil.getInstance();
     String json = sp.getString(SharedPreferencesKeys.searchHistory).toString();
-    print("[home.dart的东西====]==>json $json");
+    print("[home.dart的东西====][initSearchHistory]==>json $json");
     searchHistoryList = SearchHistoryList.fromJSON(json);
   }
 

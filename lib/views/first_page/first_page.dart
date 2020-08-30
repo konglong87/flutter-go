@@ -52,9 +52,11 @@ class FirstPageState extends State<FirstPage>
   }
 
   Future<Map> getIndexListData([Map<String, dynamic> params]) async {
+    print("进入try；额....111111....");
     /// const juejin_flutter = 'https://timeline-merger-ms.juejin.im/v1/get_tag_entry?src=web&tagId=5a96291f6fb9a0535b535438';
     const juejin_flutter =
-        'https://juejin.im/recommended?sort=newest';
+        'http://123.207.32.32:8001/api/meal';
+//        'https://juejin.im/recommended?sort=newest';
 //        'https://fluttergo.pub:9527/juejin.im/v1/get_tag_entry?src=web&tagId=5a96291f6fb9a0535b535438';
 
     var pageIndex = (params is Map) ? params['pageIndex'] : 0;
@@ -62,24 +64,64 @@ class FirstPageState extends State<FirstPage>
     var responseList = [];
     var pageTotal = 0;
 
+    print("进入try；额....222222....");
     try {
-      var response = await NetUtils.get(juejin_flutter, _param);
-      responseList  =  json.decode(response['d']['entrylist'].toString()) as List;
+      print("进入try；额....001233333333....");
+//      var response = await NetUtils.get(juejin_flutter, _param);
+      var response = await NetUtils.get(juejin_flutter, null);
+      print("返回值[response][][][response]=== $response");
+
+
+//      String mm  = response["meal"].toString() ?? "";
+//
+//      print("[][mmm][==> $mm");
+
+//      var responseList2  =  json.decode(mm);
+
+      final mealArry = response["meal"];
+      print ("==mealArry====$mealArry");
+
+      for(var json in mealArry){
+        print("json=0000000===> $json");
+//        responseList.add(json);
+      }
+
+      responseList = mealArry as List;
+
+
+//      var responseList2  =  json.decode(response['meal']);
+      print("responseList2=======> $responseList");
+
+//      responseList  =  json.decode(response['meal'].toString()) as List;
+      print("返回值[responseList]=== $responseList");
+      print("返回值[responseList]len=== ${responseList.length}");
+      print("返回值[responseList]len=== ${responseList.length}");
+      print("返回值[responseList]len=== ${responseList.length}");
+      print("返回值[responseList]len=== ${responseList.length}");
+      print("返回值[responseList]len=== ${responseList.length}");
+//      responseList  =  json.decode(response['d']['entrylist'].toString()) as List;
 //      responseList =  response['d']['entrylist'];
-      pageTotal = int.parse(response['d']['total'].toString());
-      if (!(pageTotal is int) || pageTotal <= 0) {
+      pageTotal = 27;
+//      pageTotal = int.parse(response['count'].toString() ?? "27");
+      print("返回值[pageTotal]=== $pageTotal");
+//      pageTotal = int.parse(response['d']['total'].toString());
+      if (!(pageTotal is int) || pageTotal <= 0 || pageTotal == null) {
         pageTotal = 0;
       }
     } catch (e) {
-      print("【first_page】err====$e");
+//      print("【错误】【first_page】err====$e");
+      print("【错误】【first_page】err====$e");
     }
     pageIndex += 1;
     List resultList = new List();
-    for (int i = 0; i < responseList.length; i++) {
+//    for (int i = 0; i < responseList.length; i++) {
+    int len  = responseList.length;
+    for (int i = 0; i < len; i++) {
       try {
         FirstPageItem cellData = new FirstPageItem.fromJson(responseList[i]);
         resultList.add(cellData);
       } catch (e) {
+        print("【错误】【first_page】【resultList转换】err====$e");
         // No specified type, handles all
       }
     }

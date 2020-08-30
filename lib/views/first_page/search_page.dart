@@ -19,7 +19,7 @@ final _industryPage = Industry.IndustryPage(itemTitle: (state) {
           size: 32,
         ),
         title: Text(
-          state.res[index].title as String,
+          state.res[index].title.toString(),
           overflow: TextOverflow.ellipsis,
         ),
         subtitle: Text(state.res[index].source.toString()),

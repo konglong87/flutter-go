@@ -10,7 +10,7 @@ final pages = [
       //'assets/mountain.png',
       'assets/images/p2.png',
       'sz是什么？',
-      '【sz】 是由"拍卖"前端团队几位 suznong 粉丝，用业余时间开发的一款，用于 sunzong-pua 教学帮助的App，这里没有高大尚的概念，只有一个一个亲历的尝试，用最直观的方式展示的 pua 官方demo',
+      '【sz】 是由"成功学"传销团队几位 suznong 粉丝，用业余时间开发的一款，用于 sunzong-pua 教学帮助的App，这里没有高大尚的概念，只有一个一个亲历的尝试，用最直观的方式展示的 pua 官方demo',
       'assets/images/plane.png'),
   PageViewModel(
       const Color(0xFF638de3),
@@ -50,7 +50,7 @@ class SzPage extends StatelessWidget {
             await SpUtil.getInstance()
               ..putBool(SharedPreferencesKeys.showWelcome, false);
             _goHomePage(context);
-          } else if (type == 'goGithub') {
+          } else if (type == 'go-sz-Github') {
             Application.router.navigateTo(
               context,
               '${Routes.webViewPage}?title=${Uri.encodeComponent(txt)} Doc&&url=${Uri.encodeComponent("https://github.com/SunYH1999/point")}',

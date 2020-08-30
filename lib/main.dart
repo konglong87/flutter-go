@@ -241,7 +241,7 @@ void main() async {
     List data =
         WidgetTree.insertDevPagesToList(json, StandardPages().getLocalList()) as List<dynamic>;
     Application.widgetTree = WidgetTree.buildWidgetTree(data);
-    print("Application.widgetTree>>>> ${Application.widgetTree}");
+    print("【main.dart入口文件】Application.widgetTree>>>> ${Application.widgetTree}");
   });
 
   print("--------------R---------3333-------------------");
